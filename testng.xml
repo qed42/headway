@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Test Suite" thread-count ="2" parallel="methods">
+
+	<listeners>
+		<listener class-name="com.qed42.qa.utilities.TestListener"></listener>
+	</listeners>
+
+	<test name="Testing 1">
+		<!-- <groups> <run> <exclude name = "Functionality" /> </run> </groups> -->
+		<parameter name="browser" value="chrome" />
+		<classes>
+			<class name="com.qed42.qa.tests.LoginExampleTest"></class>
+			<class name="com.qed42.qa.tests.ExcelExampleTest"></class>
+		</classes>
+	</test> <!-- Test -->
+
+	<test name="Testing 2">
+		<!-- <groups> <run> <exclude name = "Functionality" /> </run> </groups> -->
+		<parameter name="browser" value="firefox" />
+		<classes>
+			<class name="com.qed42.qa.tests.LoginExampleTest"></class>
+		</classes>
+	</test> <!-- Test -->
+</suite> <!-- Suite -->

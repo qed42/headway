@@ -1,0 +1,12 @@
+{
+	"users": [
+		{
+			"username": "selenium@qa",
+			"password": "qa@12345"
+		},
+		{
+			"username": "selenium",
+			"password": "qa@123"
+		}
+	]
+}

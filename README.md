@@ -232,3 +232,4 @@ Test class contains the test case/test methods with execution steps and extends 
 
 ### Run Test Suite in Eclipse:
 You can run test suite by doing right-click on testng.xml file and select Run as... / TestNG test
+
