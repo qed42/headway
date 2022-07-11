@@ -2,7 +2,6 @@ package com.qed42.qa.pageobjects;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-
 import com.qed42.qa.drivermanager.BaseDriver;
 
 public class LoginExamplePage extends BaseDriver {

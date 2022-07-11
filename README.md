@@ -1,4 +1,4 @@
-# Selenium Framework
+# Selenium Web Automation Framework
 
 This is a boilerplate for Data Driven framework in Selenium using Java as scripting language. Maven is used for dependency management and continuous development. TestNG is used to maintain test cases. It supports parallel test execution. Page Object Model design pattern to maintain web elements.
 
@@ -85,11 +85,11 @@ You need to add this listener class to your test classes, as below:
 #### Excel Manager
 Fillo library is used for reading and writing data with excel files (xlsx and xls).
 
-To use this feature, create an instance of 'ExcelManager' class and access methods to read data from excel
+To use this feature, create an instance of 'ExcelManager' class and access methods to read/write data to excel
 
 	ExcelManager fillo = new ExcelManager();
 
-ExcelManager provides below methods to read data from excel file :
+ExcelManager provides below methods to read/write data to excel file :
 
 1. getAllData() : Performs "SELECT * From <sheetName>". Returns all data from an excel sheet.
 
@@ -170,9 +170,8 @@ Below are the valid values that should be passed for respective browser:
 2. Chrome Headless - 'chrome-headless'
 3. Firefox - 'firefox'
 4. Firefox Headless - 'firefox-headless'
-5. Internet Explorer - 'ie'
-6. Safari - 'safari'
-7. Edge - 'edge'
+5. Safari - 'safari'
+6. Edge - 'edge'
 
 ###### Safari
 To run tests in Safari browser, enable the Safari 'Developer menu' first with the steps below:

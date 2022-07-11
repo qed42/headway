@@ -5,6 +5,12 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
+/**
+ * JSONFileReader class reads a JSON file
+ * 
+ * @author QED42
+ *
+ */
 public class JsonFileReader {
 
 	/**

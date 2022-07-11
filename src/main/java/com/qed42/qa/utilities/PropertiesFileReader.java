@@ -5,6 +5,13 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
+/**
+ * PropertiesFileReader class reads properties files and returns instance of "Properties" class. 
+ * It provides one method - read(fileName), which take filepath as the parameter.
+ * 
+ * @author QED42
+ *
+ */
 public class PropertiesFileReader {
 	public static Properties properties;
 

@@ -8,6 +8,13 @@ import com.codoid.products.fillo.Connection;
 import com.codoid.products.fillo.Fillo;
 import com.codoid.products.fillo.Recordset;
 
+/**
+ * Fillo library is used for reading and writing data with excel files (xlsx and xls) using SQL queries.
+ * Create an instance of 'ExcelManager' class and access methods to read and data from/to excel.
+ * 
+ * @author QED42
+ *
+ */
 public class ExcelManager {
 
 	public String filepath1;

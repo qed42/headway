@@ -1,9 +1,7 @@
 package com.qed42.qa.configurations;
 
 import java.util.Properties;
-
 import com.qed42.qa.utilities.PropertiesFileReader;
-
 
 /**
  * Configuration is an interface that stores application related specific keys 
