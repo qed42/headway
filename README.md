@@ -1,6 +1,6 @@
-# Selenium Web Automation Framework
+# Headway - Selenium Data Driven Framework
 
-This is a boilerplate for Data Driven framework in Selenium using Java as scripting language. Maven is used for dependency management and continuous development. TestNG is used to maintain test cases. It supports parallel test execution. Page Object Model design pattern to maintain web elements.
+Headway is an open-source test automation framework for web applications. It is a Data Driven framework built using Java and open source libraries. Maven is used for dependency management and continuous development. TestNG is used for creating and maintaining test cases. It supports parallel test execution. Page Object Model design pattern is used for maintaining web elements.
 
 ********************************************************************************
 
@@ -16,17 +16,17 @@ This is a boilerplate for Data Driven framework in Selenium using Java as script
 1. JRE System Library (JDK 11)
 2. Maven - Build Automation Tool 
 3. Test NG - Test Driven Development Framework
-4. ExtentReport - Generate Excellent Test Report
-5. Apache Log4j 2 - Generate Loggers
-6. Fillo API - Drive Data from Excel Files
-7. JSON Simple - Drive Data from JSON Files
+4. ExtentReport - Generates Excellent Test Report
+5. Apache Log4j 2 - Generates Loggers
+6. Fillo API - Drives Data from Excel Files
+7. JSON Simple - Drives Data from JSON Files
 8. Surefire Plugin - Run the unit tests and generate report
 
 ## Setup Instructions
 
 1. Download/Clone project in your local machine
 2. Import project as an existing Maven project in Eclipse
-	a. File > Import > Maven > Existing Maven Projects > Next > Browse to selenium-boilerplate
+	a. File > Import > Maven > Existing Maven Projects > Next > Browse to headway
 	b. Ensure pom.xml is found
 	c. Finish
 
@@ -39,13 +39,13 @@ This is a boilerplate for Data Driven framework in Selenium using Java as script
 BaseDriver java class contains methods to initialise browser & launch it before test execution and quit the browser after test execution.<br/>
 Browser type is passed as parameter via testng.xml file.
 
-**Location:** "/selenium-boilerplate/src/main/java/com/qed42/qa/drivermanager/BaseDriver.java"
+**Location:** "/src/main/java/com/qed42/qa/drivermanager/BaseDriver.java"
 
 ### Reports
 
 ExtentReports library is used to generate interactive and detailed reports for tests. The "reports" directory will be created with "Report.hmtl" file, once test is run. Report path is configurable using config.properties file > reportPath attribute.
 
-**Location:** "/selenium-boilerplate/reports/Report.html"
+**Location:** "/reports/Report.html"
 
 You can log test status using log() method of Report class as below:
 
@@ -57,15 +57,15 @@ You can log test status using log() method of Report class as below:
 
 The "screenshots" directory will be created under project root directory, when test fails for first time. For later test runs, screenshot file is captured under this directory for fail tests.
 
-**Location:** "/selenium-boilerplate/screenshots"
+**Location:** "/screenshots"
 
 ### Utility
 
-**Location:** "/selenium-boilerplate/src/main/java/com/qed42/qa/utilities"
+**Location:** "/src/main/java/com/qed42/qa/utilities"
 
 #### Test Listener
 
-TestListener java class implements Testng ITestListener.
+TestListener java class implements TestNG ITestListener.
 
 TestListener class listens to below events -
  1. onStart : Invoked after test class is instantiated and before execution of any testNG method.
@@ -105,7 +105,7 @@ PropertiesFileReader class reads properties files and returns instance of "Prope
 	PropertiesFileReader.read(PROJECT_DIR + "/config.properties");
 
 #### JSON File Reader
-JSONFileReader class reads a json file using below methods :
+JSONFileReader class reads a JSON file using below methods :
 
 1. JSONObject readJson(String filename)
 2. JSONArray readJson(String filename, String JSONkey)
@@ -117,7 +117,7 @@ Properties are used to externalise the data which is configurable. The config.pr
 ### Configuration
 Configuration is an interface that contains all configuration variables defined in the config.properties file.
 
-**Location:** "/selenium-boilerplate/src/main/java/com/qed42/qa/configurations"
+**Location:** "/src/main/java/com/qed42/qa/configurations"
 
 ### Resources
 
@@ -126,11 +126,11 @@ Apache Log4j 2 is the library used for logging. Configuration is set in log4j2.p
 
 **Log Config Filename:** log4j2.properties
 
-**Location:** "/selenium-boilerplate/src/main/resources/"
+**Location:** "/src/main/resources/"
 
 **Log Filename:** logfile.log
 
-**Location:** "/selenium-boilerplate/reports/logfile.log"
+**Location:** "/reports/logfile.log"
 
 To start logging messages using this basic configuration, all you need to do is obtain a 'Logger' instance using the LogManager class:
 
@@ -154,12 +154,12 @@ appenders = file > This line enables support for only file type.
 #### Test Data Repository
 This repository is used for storing the test resources (that is to be used in tests) such as excel file, pdf, images, etc. There is a sample excel file 'testdata.xlsx' under this directory.
 
-**Location:** "/selenium-boilerplate/src/test/resources"
+**Location:** "/src/test/resources"
 
 ### Run Test Suite
 TestNG.xml file is a configuration file that helps in organizing our tests. It allows testers to create and handle multiple test classes, define test suites and tests. It makes a tester's job easier by controlling the execution of tests by putting all the test cases together and run it under one XML file.
 
-**Location:** "/selenium-boilerplate/testng.xml"
+**Location:** "/testng.xml"
 
 ##### Parameter:
 Browser name is passed as parameter from testng.xml to BaseDriver class. In case, no browser is passed then Chrome is used as default browser for test execution.
@@ -234,7 +234,7 @@ Cross-browser testing requires us to test our website on multiple browsers. From
 Page Objects class are used to store the WebElements for a Web Page and contains Page methods which perform operations on those WebElements. A good practice is to have a separate class for every single WebPage.<br/>
 An example page object class 'ExampleLoginPage' is provided.
 
-**Location:** "/selenium-boilerplate/src/test/java/com/qed42/qa/pageobjects"
+**Location:** "/src/test/java/com/qed42/qa/pageobjects"
 
 ### Test Class
 Test class contains the test case/test methods with execution steps and extends 'BaseDriver' class. 'BaseDriver' class serves as a parent test class that will be extended by child test classes. The common methods across each Test Class are set up and tear down our test. Set up method is annotated with @BeforeMethod while tear down methods are annotated with @AfterMethod and @AfterClass.
@@ -245,4 +245,4 @@ You can run test suite by doing right-click on testng.xml file and select Run as
 ### Surefire Plugin
 Surefire Plugin is used for unit testing and generating report. You can run test suite by adding required testng xml files in pom.xml. Then do right-click on pom.xml and select Run as... / Maven test.
 
-After execution, surefire plugin generates report at "/selenium-boilerplate/target/surefire-reports" in html and xml format.
+After execution, surefire plugin generates report at "/target/surefire-reports" in html and xml format.
