@@ -6,7 +6,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.qed42</groupId>
-	<artifactId>selenium.framework</artifactId>
+	<artifactId>headway</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
 	<name>selenium.datadriven.framework</name>

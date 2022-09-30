@@ -19,8 +19,7 @@ public class JsonExampleTest extends BaseDriver {
 	@Test(dataProvider = "userData")
 	public void testJsonLogin(String username, String password) throws Exception {
 		LoginExamplePage obj = new LoginExamplePage(getDriver());
-		Report.log(Status.PASS, "Navigated to the login page");
-
+		
 		obj.login(username, password);
 		Assert.assertEquals(obj.getPageCurrentUrl(), "https://demo.guru99.com/test/newtours/login_sucess.php");
 		Report.log(Status.PASS, "Login Successful");
