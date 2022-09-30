@@ -14,7 +14,6 @@ public class LoginExampleTest extends BaseDriver {
 	@Test
 	public void testLoginValidInput() throws Exception {
 		LoginExamplePage obj1 = new LoginExamplePage(getDriver());
-		Report.log(Status.PASS, "Navigated to the login page");
 		obj1.login("selenium@qa", "qa@12345");
 		Report.log(Status.PASS, "Login successful");
 		Assert.assertEquals(obj1.getPageCurrentUrl(), "https://demo.guru99.com/test/newtours/login_sucess.php");
@@ -23,7 +22,6 @@ public class LoginExampleTest extends BaseDriver {
 	@Test
 	public void testLoginInvalidInput() throws Exception {
 		LoginExamplePage obj2 = new LoginExamplePage(getDriver());
-		Report.log(Status.PASS, "Navigated to the login page");
 		obj2.login("selenium", "qa@123");
 		Report.log(Status.FAIL, "Login unsuccessful");
 		Assert.assertEquals(obj2.getPageCurrentUrl(), "https://demo.guru99.com/test/newtours/login_sucess.php");
