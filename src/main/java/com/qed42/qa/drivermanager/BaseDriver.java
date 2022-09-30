@@ -52,7 +52,7 @@ public class BaseDriver implements Configuration {
 	public void initialize(@Optional("chrome") String browser) {
 		driver.set(getDriver(browser));
 
-		log.info(browser.toUpperCase() + " is configured");
+		log.info("Thread Id : " + Thread.currentThread().getId() + " " + browser.toUpperCase() + " is configured");
 
 		getDriver().manage().window().maximize();
 		getDriver().manage().deleteAllCookies();

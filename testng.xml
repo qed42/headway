@@ -15,11 +15,11 @@
 		</classes>
 	</test> <!-- Test -->
 
-	<test name="Testing 2">
-		<!-- <groups> <run> <exclude name = "Functionality" /> </run> </groups> -->
+<!-- 	<test name="Testing 2">
+		<groups> <run> <exclude name = "Functionality" /> </run> </groups>
 		<parameter name="browser" value="firefox" />
 		<classes>
 			<class name="com.qed42.qa.tests.LoginExampleTest"></class>
 		</classes>
-	</test> <!-- Test -->
+	</test> Test -->
 </suite> <!-- Suite -->
