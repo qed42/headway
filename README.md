@@ -147,7 +147,7 @@ Support for below appenders is provided:
  1. ConsoleAppender – logs messages to the System console.
  2. FileAppender – writes log messages to a file
 
-appenders = console, file > This line is commented in log4j2.properties. In order to enable support for both console and file types uncomment this line.
+appenders = console, file > This line is commented in log4j2.properties. In order to enable support for both console and file types uncomment this and respective root option lines.
 
 appenders = file > This line enables support for only file type.
 
