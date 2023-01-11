@@ -45,7 +45,7 @@ Browser type is passed as parameter via testng.xml file.
 
 ExtentReports library is used to generate interactive and detailed reports for tests. The "reports" directory will be created with "Report.hmtl" file, once test is run. Report path is configurable using config.properties file > reportPath attribute.
 
-**Location:** "/reports/Report.html"
+**Location:** "/reports"
 
 You can log test status using log() method of Report class as below:
 
