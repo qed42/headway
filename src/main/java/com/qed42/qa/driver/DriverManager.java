@@ -1,4 +1,4 @@
-package com.qed42.qa.drivermanager;
+package com.qed42.qa.driver;
 
 import java.util.concurrent.TimeUnit;
 import org.apache.logging.log4j.LogManager;
@@ -11,35 +11,33 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.safari.SafariDriver;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Optional;
-import org.testng.annotations.Parameters;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import com.qed42.qa.configurations.Configuration;
+import org.testng.annotations.Optional;
+import io.github.bonigarcia.wdm.WebDriverManager;
 
 /**
- * BaseDriver is a class that implements Configuration interface. 
- * BaseDriver class contains methods to initialise browser driver & launch browser before test execution
+ * DriverManager class contains methods to initialise browser driver & launch browser before test execution
  * and quit the browser after test execution. Browser type is passed as parameter via testng.xml file.
- * 
- * @author QED42
  *
  */
-public class BaseDriver implements Configuration {
-	protected ThreadLocal<WebDriver> driver = new ThreadLocal<>();
-
-	static Logger log = LogManager.getLogger(BaseDriver.class);
-
+public class DriverManager {
+	
+	protected static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
+	static Logger log = LogManager.getLogger(DriverManager.class);
+	
+    private DriverManager()	{
+		// To prevent external instantiation of this class
+    }
+	
 	/**
 	 * This method is used to retrieve the driver and does not take any parameters.
 	 * 
 	 * @return
 	 */
-	public WebDriver getDriver() {
-		return this.driver.get();
+	public static WebDriver getDriver() {
+		return driver.get();
 	}
+	
 
 	/**
 	 * This method initializes the driver and launches browser. It maximizes the browser window.
@@ -47,12 +45,10 @@ public class BaseDriver implements Configuration {
 	 * 
 	 * @param browser
 	 */
-	@Parameters({ "browser" })
-	@BeforeMethod
-	public void initialize(@Optional("chrome") String browser) {
+	public static void initialize(@Optional("chrome") String browser)  {
 		driver.set(getDriver(browser));
 
-		log.info("Thread Id : " + Thread.currentThread().getId() + " " + browser.toUpperCase() + " is configured");
+		log.info(browser.toUpperCase() + " is configured");
 
 		getDriver().manage().window().maximize();
 		getDriver().manage().deleteAllCookies();
@@ -68,10 +64,10 @@ public class BaseDriver implements Configuration {
 	 * @param browserName
 	 * @return
 	 */
-	public WebDriver getDriver(String browserName) {
+	public static WebDriver getDriver(String browserName) {
 		WebDriver driver = null;
 
-		switch (browserName.toLowerCase()) {
+		switch (browserName) {
 		case "chrome":
 			WebDriverManager.chromedriver().setup();
 			driver = new ChromeDriver();
@@ -89,7 +85,7 @@ public class BaseDriver implements Configuration {
 			driver = new FirefoxDriver(new FirefoxOptions().setHeadless(true));
 			break;
 		case "edge":
-			if (PLATFORM_NAME.toLowerCase().contains("mac")) {
+			if (Configuration.PLATFORM_NAME.toLowerCase().contains("mac")) {
 				throw new WebDriverException("Your operating system does not support the requested browser");
 			} else {
 				WebDriverManager.edgedriver().setup();
@@ -97,7 +93,7 @@ public class BaseDriver implements Configuration {
 			}
 			break;
 		case "safari":
-			if (PLATFORM_NAME.toLowerCase().contains("windows")) {
+			if (Configuration.PLATFORM_NAME.toLowerCase().contains("windows")) {
 				throw new WebDriverException("Your operating system does not support the requested browser");
 			} else {
 				driver = new SafariDriver();
@@ -113,8 +109,7 @@ public class BaseDriver implements Configuration {
 	 * quit() method is called after every test. It closes the browser
 	 * 
 	 */
-	@AfterMethod
-	public void quit() {
+	public static void quit() {
 		getDriver().manage().deleteAllCookies();
 		getDriver().close();
 	}
@@ -122,15 +117,14 @@ public class BaseDriver implements Configuration {
 	/**
 	 * terminate() method is called after every class. It removes the ThreadLocal driver.
 	 */
-	@AfterClass
-	void terminate() {
+	public static void terminate() {
 		driver.remove();
 	}
 
 	/*
 	 * Use below method when browser is passed as parameter in config.properties
 	 * 
-	 * @BeforeMethod public void initialize() { 
+	 * public void initialize() { 
 	 * String browserName = properties.getProperty("browser"); 
 	 * driver.set(getDriver(browserName));
 	 * 
