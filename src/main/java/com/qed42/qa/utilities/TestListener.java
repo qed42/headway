@@ -40,11 +40,12 @@ public class TestListener implements ITestListener {
 		log.info("Test Failed : " + result.getName());
 		try {
 			String date = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss").format(new Date());
+
 			//Object currentInstance = result.getInstance();
 			TakesScreenshot ts = (TakesScreenshot) (DriverManager.getDriver());
 
 			File source = ts.getScreenshotAs(OutputType.FILE);
-			String destination = System.getProperty("user.dir") + "/screenshots/" + result.getName() + date + ".png";
+			String destination = System.getProperty("user.dir") + "/screenshots/" + result.getName() + "_" + date + ".png";
 			File finalDestination = new File(destination);
 
 			FileUtils.copyFile(source, finalDestination);
