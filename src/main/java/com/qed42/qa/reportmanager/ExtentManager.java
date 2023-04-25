@@ -13,8 +13,6 @@ import com.qed42.qa.configurations.Configuration;
  * ExtentManager class implements Configuration interface.
  * In this class, we create an ExtentReports object which can be reachable via getExtentReports() method. 
  * Also, we set ExtentReports report HTML file location.
- * 
- * @author QED42
  *
  */
 public class ExtentManager implements Configuration {
