@@ -17,7 +17,7 @@ import com.qed42.qa.utilities.ExcelManager;
 
 @Listeners(com.qed42.qa.utilities.TestListener.class)
 
-public class ExcelExampleTest {
+public class ExcelExampleTest extends BaseTest {
 	ArrayList<String> loginCreds = new ArrayList<String>();
 
 	@Test(dataProvider = "userData")
