@@ -1,6 +1,6 @@
 package com.qed42.qa.driver;
 
-import java.util.concurrent.TimeUnit;
+import java.time.Duration;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
@@ -13,7 +13,6 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.safari.SafariDriver;
 import com.qed42.qa.configurations.Configuration;
 import org.testng.annotations.Optional;
-import io.github.bonigarcia.wdm.WebDriverManager;
 
 /**
  * DriverManager class contains methods to initialise browser driver & launch browser before test execution
@@ -53,8 +52,8 @@ public class DriverManager {
 		getDriver().manage().window().maximize();
 		getDriver().manage().deleteAllCookies();
 
-		getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		getDriver().manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
+		getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		getDriver().manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));
 	}
 
 	/**
@@ -69,26 +68,21 @@ public class DriverManager {
 
 		switch (browserName) {
 		case "chrome":
-			WebDriverManager.chromedriver().setup();
 			driver = new ChromeDriver();
 			break;
 		case "chrome-headless":
-			WebDriverManager.chromedriver().setup();
-			driver = new ChromeDriver(new ChromeOptions().setHeadless(true));
+			driver = new ChromeDriver(new ChromeOptions().addArguments("--headless=new"));
 			break;
 		case "firefox":
-			WebDriverManager.firefoxdriver().setup();
 			driver = new FirefoxDriver();
 			break;
 		case "firefox-headless":
-			WebDriverManager.firefoxdriver().setup();
-			driver = new FirefoxDriver(new FirefoxOptions().setHeadless(true));
+			driver = new FirefoxDriver(new FirefoxOptions().addArguments("-headless"));
 			break;
 		case "edge":
 			if (Configuration.PLATFORM_NAME.toLowerCase().contains("mac")) {
 				throw new WebDriverException("Your operating system does not support the requested browser");
 			} else {
-				WebDriverManager.edgedriver().setup();
 				driver = new EdgeDriver();
 			}
 			break;
