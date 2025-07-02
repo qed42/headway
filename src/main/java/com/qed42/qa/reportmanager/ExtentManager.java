@@ -27,7 +27,8 @@ public class ExtentManager implements Configuration {
 	 */
 	public synchronized static ExtentReports getExtentReports() {
 		if (extentreport == null) {
-			String date = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss").format(new Date());
+			// String date = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss").format(new Date());
+			String date = new SimpleDateFormat("yyyy-MM-dd_HH_mm_ss").format(new Date());
 			ExtentSparkReporter htmlreporter = new ExtentSparkReporter(REPORT_PATH + date);
 			extentreport = new ExtentReports();
 			extentreport.attachReporter(htmlreporter);
